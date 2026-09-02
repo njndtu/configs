@@ -1,0 +1,3 @@
+# Show plists as XML in diffs even if a tool rewrites them as binary.
+# Enable with: git config diff.plist.textconv "plutil -convert xml1 -o -"
+*.plist diff=plist
