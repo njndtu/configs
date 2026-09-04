@@ -51,7 +51,49 @@ readable again:
 git config diff.plist.textconv "plutil -convert xml1 -o -"
 ```
 
+## cursor/
+
+Cursor's user settings, keybindings, and extension list.
+
+- `settings.json`, `keybindings.json` — symlinked into
+  `~/Library/Application Support/Cursor/User/`, so edits in either place are the
+  same file
+- `extensions.txt` — installed extension ids, one per line
+- `mcp.json.example`, `cli-config.example.json` — templates; see below
+
+### Set up on a new machine
+
+```sh
+./scripts/cursor-link.sh
+```
+
+Backs up anything already there as `*.bak`, symlinks the two config files, and
+installs everything in `extensions.txt` (needs the `cursor` CLI on PATH —
+cmd-shift-P → "Shell Command: Install 'cursor' command").
+
+If Cursor ever replaces a symlink with a regular file after an in-app settings
+change, re-run the script; it detects and relinks.
+
+### What is deliberately not committed
+
+`~/.cursor/mcp.json` and `~/.cursor/cli-config.json` are gitignored. The real
+files contain internal database endpoints, AWS account ids, Secrets Manager
+ARNs, and Cursor account identifiers, and this repo is public. The `.example`
+versions have the same shape with placeholders — copy one into place and fill in
+the real values:
+
+```sh
+cp cursor/mcp.json.example ~/.cursor/mcp.json
+```
+
+`~/.cursor/argv.json` is also skipped: it is stock apart from a per-install
+crash-reporter id.
+
 ## Notes
 
-The iTerm2 AI API key is stored in the macOS Keychain, not in the plist, so it
-is not in this repo. Keep it that way — this repo is public.
+**This repo is public.** Nothing here should contain a credential, an internal
+hostname, or an account identifier. The iTerm2 AI API key lives in the macOS
+Keychain rather than the plist, and the Cursor files that do hold that kind of
+value are gitignored with `.example` templates in their place. Check before
+adding anything new — shell configs and app state directories are the usual way
+a token ends up committed by accident.

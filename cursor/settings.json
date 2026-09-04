@@ -1,0 +1,7 @@
+{
+    "window.autoDetectColorScheme": true,
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": true
+    },
+    "cursor.composer.queueMessageDefaultBehavior": "steer"
+}

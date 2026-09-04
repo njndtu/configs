@@ -1,2 +1,7 @@
 .DS_Store
 *.swp
+
+# Never commit the real versions -- infrastructure endpoints and account identifiers
+.cursor/mcp.json
+cursor/mcp.json
+cursor/cli-config.json

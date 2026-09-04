@@ -1,0 +1,8 @@
+alefragnani.bookmarks
+anysphere.cursorpyright
+anysphere.remote-ssh
+eamodio.gitlens
+ms-python.debugpy
+ms-python.python
+reduckted.vscode-gitweblinks
+vscodevim.vim

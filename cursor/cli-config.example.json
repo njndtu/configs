@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(ls)",
+      "Mcp(kastle-staging-db:get_database_connection_info)",
+      "Mcp(kastle-prod-db:get_database_connection_info)",
+      "Mcp(kastle-staging-db:is_database_connected)",
+      "Mcp(kastle-prod-db:is_database_connected)",
+      "Mcp(kastle-staging-db:connect_to_database)",
+      "Mcp(kastle-staging-db:run_query)",
+      "Shell(aws)",
+      "Shell(nc)",
+      "Shell(echo)",
+      "Mcp(kastle-prod-db:run_query)",
+      "Mcp(kastle-prod-db:get_table_schema)",
+      "Mcp(kastle-prod-db:connect_to_database)"
+    ],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "display": {
+    "showLineNumbers": false,
+    "showThinkingBlocks": false,
+    "showStatusIndicators": false,
+    "showStatusLineRunningTime": false,
+    "mode": "zen"
+  },
+  "notifications": true,
+  "hints": true,
+  "modelSlashCommands": true,
+  "rewind": true,
+  "model": {
+    "modelId": "default",
+    "displayModelId": "auto",
+    "displayName": "Auto",
+    "displayNameShort": "Auto",
+    "aliases": [
+      "auto"
+    ],
+    "maxMode": false
+  },
+  "modelParameters": {
+    "default": []
+  },
+  "selectedModel": {
+    "modelId": "default",
+    "parameters": []
+  },
+  "exploreSubagentModel": "default",
+  "network": {
+    "useHttp1ForAgent": false
+  },
+  "approvalMode": "allowlist",
+  "autoAcceptWebSearch": false,
+  "sandbox": {
+    "mode": "disabled",
+    "networkAccess": "user_config_with_defaults"
+  },
+  "attribution": {
+    "attributeCommitsToAgent": true,
+    "attributePRsToAgent": true
+  }
+}

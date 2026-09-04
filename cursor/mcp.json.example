@@ -1,0 +1,39 @@
+{
+  "mcpServers": {
+    "staging-db": {
+      "command": "uvx",
+      "args": [
+        "awslabs.postgres-mcp-server@latest",
+        "--connection_method", "PG_WIRE_PROTOCOL",
+        "--db_endpoint", "<staging-rds-endpoint>",
+        "--port", "5432",
+        "--database", "<database>",
+        "--region", "us-west-2",
+        "--secret_arn", "<staging-secretsmanager-arn>"
+      ],
+      "env": {
+        "AWS_PROFILE": "staging",
+        "AWS_REGION": "us-west-2"
+      }
+    },
+
+    "prod-db": {
+      "command": "uvx",
+      "args": [
+        "awslabs.postgres-mcp-server@latest",
+        "--connection_method", "PG_WIRE_PROTOCOL",
+        "--db_type", "RPG",
+        "--db_endpoint", "<prod-rds-endpoint>",
+        "--db_cluster_arn", ":",
+        "--port", "5432",
+        "--database", "<database>",
+        "--region", "us-west-2",
+        "--secret_arn", "<prod-secretsmanager-arn>"
+      ],
+      "env": {
+        "AWS_PROFILE": "prod",
+        "AWS_REGION": "us-west-2"
+      }
+    }
+  }
+}
