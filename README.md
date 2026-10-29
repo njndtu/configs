@@ -89,6 +89,30 @@ cp cursor/mcp.json.example ~/.cursor/mcp.json
 `~/.cursor/argv.json` is also skipped: it is stock apart from a per-install
 crash-reporter id.
 
+## obsidian/
+
+Obsidian hotkeys. Obsidian keeps settings per vault, in `<vault>/.obsidian/`.
+
+- `hotkeys.json` — custom key bindings (only the ones changed from Obsidian's
+  defaults)
+
+### Set up on a new machine
+
+Quit Obsidian (it rewrites its config on exit), then copy the file into the
+vault:
+
+```sh
+cp obsidian/hotkeys.json "<vault>/.obsidian/hotkeys.json"
+```
+
+### Update the snapshot
+
+After changing hotkeys in `Settings → Hotkeys`:
+
+```sh
+cp "<vault>/.obsidian/hotkeys.json" obsidian/hotkeys.json
+```
+
 ## Notes
 
 **This repo is public.** Nothing here should contain a credential, an internal
