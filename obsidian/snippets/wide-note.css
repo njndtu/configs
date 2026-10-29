@@ -1,0 +1,29 @@
+/* Full-width notes: add `cssclasses: wide-note` to a note's frontmatter. */
+.markdown-source-view.wide-note,
+.markdown-preview-view.wide-note {
+  --file-line-width: 100%;
+}
+
+.wide-note table {
+  width: 100%;
+}
+
+.wide-note th,
+.wide-note td {
+  vertical-align: top;
+}
+
+/* Keep IDs, statuses and dates on one line; give steps and expected room. */
+.wide-note td:nth-child(1),
+.wide-note td:nth-child(5),
+.wide-note td:nth-child(6) {
+  white-space: nowrap;
+}
+
+.wide-note td:nth-child(3) {
+  min-width: 320px;
+}
+
+.wide-note td:nth-child(4) {
+  min-width: 260px;
+}

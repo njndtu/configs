@@ -1,0 +1,13 @@
+/* Code blocks: never wrap, scroll horizontally instead.
+   Keeps ASCII trees and wide tables legible in reading view. */
+
+.markdown-rendered pre,
+.markdown-rendered pre code {
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.markdown-rendered pre {
+  overflow-x: auto !important;
+}

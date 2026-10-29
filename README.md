@@ -91,26 +91,36 @@ crash-reporter id.
 
 ## obsidian/
 
-Obsidian hotkeys. Obsidian keeps settings per vault, in `<vault>/.obsidian/`.
+Obsidian hotkeys and CSS snippets. Obsidian keeps settings per vault, in
+`<vault>/.obsidian/`.
 
 - `hotkeys.json` — custom key bindings (only the ones changed from Obsidian's
   defaults)
+- `snippets/wide-note.css` — full-width notes: add `cssclasses: wide-note` to a
+  note's properties
+- `snippets/code-block-no-wrap.css` — code blocks scroll sideways instead of
+  wrapping, so ASCII trees and wide tables stay readable
 
 ### Set up on a new machine
 
-Quit Obsidian (it rewrites its config on exit), then copy the file into the
+Quit Obsidian (it rewrites its config on exit), then copy the files into the
 vault:
 
 ```sh
 cp obsidian/hotkeys.json "<vault>/.obsidian/hotkeys.json"
+mkdir -p "<vault>/.obsidian/snippets"
+cp obsidian/snippets/*.css "<vault>/.obsidian/snippets/"
 ```
+
+Then turn the snippets on in `Settings → Appearance → CSS snippets`.
 
 ### Update the snapshot
 
-After changing hotkeys in `Settings → Hotkeys`:
+After changing hotkeys in `Settings → Hotkeys` or editing a snippet:
 
 ```sh
 cp "<vault>/.obsidian/hotkeys.json" obsidian/hotkeys.json
+cp "<vault>/.obsidian/snippets/"*.css obsidian/snippets/
 ```
 
 ## Notes
