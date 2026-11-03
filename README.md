@@ -122,6 +122,24 @@ vault list comes from `~/Library/Application Support/obsidian/obsidian.json`
 If Obsidian ever replaces a symlink with a regular file, re-run the script; it
 detects and relinks.
 
+## Pulling changes from GitHub
+
+`scripts/configs-pull.applescript` fetches, shows the incoming commits and a
+`--stat` summary, and pulls (fast-forward only) once you click **Pull**. **View
+Diff** opens the full diff in TextEdit. If the pull changed `obsidian/`, it
+offers to restart Obsidian so the new settings load instead of being
+overwritten from memory.
+
+```sh
+osascript scripts/configs-pull.applescript   # run it now
+./scripts/configs-pull-schedule.sh           # daily at 09:00 (or pass HH:MM)
+./scripts/configs-pull-schedule.sh --remove
+```
+
+The daily run is a launchd agent (`~/Library/LaunchAgents/com.njndtu.configs-pull.plist`)
+rather than cron: cron skips a run that falls while the Mac is asleep, launchd
+runs it once on wake. Scheduled runs stay silent unless there are new commits.
+
 ## Notes
 
 **This repo is public.** Nothing here should contain a credential, an internal
