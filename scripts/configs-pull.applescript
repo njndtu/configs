@@ -1,19 +1,19 @@
 -- configs-pull: fetch this repo from GitHub, show what's incoming, pull on confirm.
 --
--- Run:      osascript scripts/configs-pull.applescript
+-- Run:      osascript scripts/configs-pull.applescript [--repo <path>]
 -- Daily:    ./scripts/configs-pull-schedule.sh  (runs it with --scheduled, which
 --           stays silent when there's nothing new or GitHub can't be reached)
+--
+-- --repo is the clone to pull; it defaults to the repo this script is in.
 --
 -- Pulls are fast-forward only: if this machine has commits GitHub doesn't, or
 -- uncommitted edits to a file the pull touches, git refuses and nothing changes.
 
--- Where the repo is cloned, relative to your home folder.
-property repoRelPath : "Documents/github/configs"
+property repoPath : ""
 property dialogTitle : "configs"
 
 on sh(cmd)
-	set repo to POSIX path of (path to home folder) & repoRelPath
-	return do shell script "export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin; cd " & quoted form of repo & " && " & cmd
+	return do shell script "export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin; cd " & quoted form of repoPath & " && " & cmd
 end sh
 
 on fail(what, errMsg)
@@ -22,9 +22,16 @@ end fail
 
 on run argv
 	set scheduled to false
-	try
-		set scheduled to (argv contains "--scheduled")
-	end try
+	set repoPath to ""
+	repeat with i from 1 to count of argv
+		set arg to item i of argv
+		if arg is "--scheduled" then set scheduled to true
+		if arg is "--repo" and i < (count of argv) then set repoPath to item (i + 1) of argv
+	end repeat
+	if repoPath is "" then
+		set scriptDir to do shell script "dirname " & quoted form of POSIX path of (path to me)
+		set repoPath to do shell script "cd " & quoted form of scriptDir & "/.. && pwd"
+	end if
 
 	try
 		sh("git fetch --quiet 2>&1")

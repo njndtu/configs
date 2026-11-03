@@ -37,6 +37,8 @@ cat > "$PLIST" <<EOF
   <array>
     <string>/usr/bin/osascript</string>
     <string>$REPO_DIR/scripts/configs-pull.applescript</string>
+    <string>--repo</string>
+    <string>$REPO_DIR</string>
     <string>--scheduled</string>
   </array>
   <key>StartCalendarInterval</key>

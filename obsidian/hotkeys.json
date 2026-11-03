@@ -103,7 +103,7 @@
       "modifiers": [
         "Ctrl"
       ],
-      "key": "W"
+      "key": "1"
     }
   ],
   "editor:fold-more": [
@@ -111,7 +111,7 @@
       "modifiers": [
         "Ctrl"
       ],
-      "key": "Q"
+      "key": "2"
     }
   ],
   "obsidian-timestamper:obsidian-fast-datestamp": [
@@ -137,6 +137,14 @@
         "Mod"
       ],
       "key": "T"
+    }
+  ],
+  "editor:focus": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "Q"
     }
   ]
 }

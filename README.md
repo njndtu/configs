@@ -131,10 +131,14 @@ offers to restart Obsidian so the new settings load instead of being
 overwritten from memory.
 
 ```sh
-osascript scripts/configs-pull.applescript   # run it now
+osascript scripts/configs-pull.applescript                  # run it now
+osascript scripts/configs-pull.applescript --repo <path>    # pull a clone elsewhere
 ./scripts/configs-pull-schedule.sh           # daily at 09:00 (or pass HH:MM)
 ./scripts/configs-pull-schedule.sh --remove
 ```
+
+`--repo` defaults to the clone the script is in. The schedule passes the clone
+it was installed from.
 
 The daily run is a launchd agent (`~/Library/LaunchAgents/com.njndtu.configs-pull.plist`)
 rather than cron: cron skips a run that falls while the Mac is asleep, launchd
