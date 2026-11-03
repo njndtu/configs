@@ -98,12 +98,45 @@
       "key": "C"
     }
   ],
-  "editor:focus": [
+  "editor:fold-less": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "W"
+    }
+  ],
+  "editor:fold-more": [
     {
       "modifiers": [
         "Ctrl"
       ],
       "key": "Q"
+    }
+  ],
+  "obsidian-timestamper:obsidian-fast-datestamp": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "T"
+    }
+  ],
+  "obsidian-timestamper:obsidian-fast-timestamp": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Shift"
+      ],
+      "key": "T"
+    }
+  ],
+  "workspace:new-tab": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "T"
     }
   ]
 }

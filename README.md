@@ -101,27 +101,26 @@ Obsidian hotkeys and CSS snippets. Obsidian keeps settings per vault, in
 - `snippets/code-block-no-wrap.css` — code blocks scroll sideways instead of
   wrapping, so ASCII trees and wide tables stay readable
 
+`hotkeys.json` and `snippets/` are symlinked into each vault's `.obsidian/`,
+so every linked vault shares one set of keybinds, and changes made in
+`Settings → Hotkeys` are written straight back here. Committing is the only
+manual step.
+
 ### Set up on a new machine
 
-Quit Obsidian (it rewrites its config on exit), then copy the files into the
-vault:
-
 ```sh
-cp obsidian/hotkeys.json "<vault>/.obsidian/hotkeys.json"
-mkdir -p "<vault>/.obsidian/snippets"
-cp obsidian/snippets/*.css "<vault>/.obsidian/snippets/"
+./scripts/obsidian-link.sh                  # every vault Obsidian knows about
+./scripts/obsidian-link.sh "<vault>" ...    # or just these
 ```
 
-Then turn the snippets on in `Settings → Appearance → CSS snippets`.
+Backs up anything already there as `*.bak` and symlinks the two paths. The
+vault list comes from `~/Library/Application Support/obsidian/obsidian.json`
+(needs `jq`). If Obsidian is open, reload each vault afterwards (cmd-P →
+"Reload app without saving"). Then turn the snippets on per vault in
+`Settings → Appearance → CSS snippets`.
 
-### Update the snapshot
-
-After changing hotkeys in `Settings → Hotkeys` or editing a snippet:
-
-```sh
-cp "<vault>/.obsidian/hotkeys.json" obsidian/hotkeys.json
-cp "<vault>/.obsidian/snippets/"*.css obsidian/snippets/
-```
+If Obsidian ever replaces a symlink with a regular file, re-run the script; it
+detects and relinks.
 
 ## Notes
 
